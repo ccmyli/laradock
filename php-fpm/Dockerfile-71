@@ -134,6 +134,17 @@ RUN if [ ${INSTALL_MONGO} = true ]; then \
 ;fi
 
 #####################################
+# php RD-Kafka:
+#####################################
+
+ARG INSTALL_KAFKA=false
+RUN if [ ${INSTALL_MONGO} = true ]; then \
+    # Install the kafka extension
+    pecl install rdkafka && \
+    docker-php-ext-enable rdkafka \
+;fi
+
+#####################################
 # ZipArchive:
 #####################################
 
