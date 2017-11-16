@@ -130,7 +130,7 @@ ARG INSTALL_KAFKA=false
 RUN if [ ${INSTALL_KAFKA} = true ]; then \
     # Install the kafka extension
     apt-get install -y git \
-    git clone https://github.com/edenhill/librdkafka \
+    && git clone https://github.com/edenhill/librdkafka \
     && cd librdkafka && ./configure && make && make install \
     && pecl install rdkafka \
     && echo "extension=rdkafka.so" >> /etc/php/7.1/mods-available/rdkafka.ini \
