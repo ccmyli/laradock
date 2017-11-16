@@ -133,8 +133,7 @@ RUN if [ ${INSTALL_KAFKA} = true ]; then \
     && git clone https://github.com/edenhill/librdkafka \
     && cd librdkafka && ./configure && make && make install \
     && pecl install rdkafka \
-    && echo "extension=rdkafka.so" >> /etc/php/7.1/mods-available/rdkafka.ini \
-    && ln -s /etc/php/7.1/mods-available/rdkafka.ini /etc/php/7.1/cli/conf.d/rdkafka.ini \
+    &&  docker-php-ext-enable rdkafka \
 ;fi
 
 #####################################
