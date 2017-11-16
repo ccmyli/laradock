@@ -608,20 +608,6 @@ RUN if [ ${INSTALL_PYTHON} = true ]; then \
 
 
 #####################################
-# php RD-Kafka EXTENSION FOR PHP 7.1
-#####################################
-
-ARG INSTALL_KAFKA=false
-RUN if [ ${INSTALL_KAFKA} = true ]; then \
-    # Install the kafka extension
-    git clone https://github.com/edenhill/librdkafka \
-    && cd librdkafka && ./configure && make && make install \
-    && pecl install rdkafka \
-    && echo "extension=rdkafka.so" >> /etc/php/7.1/mods-available/rdkafka.ini \
-    && ln -s /etc/php/7.1/mods-available/rdkafka.ini /etc/php/7.1/cli/conf.d/rdkafka.ini \
-;fi
-
-#####################################
 # ImageMagick:
 #####################################
 USER root
